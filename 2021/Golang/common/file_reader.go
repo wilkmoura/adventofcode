@@ -23,3 +23,14 @@ func GetIntArrayFromFile(file_name string) (input []int) {
 	}
 	return input
 }
+
+func GetStringArrayFromFile(file_name string) (input []string) {
+	example, err := os.ReadFile(file_name)
+	check(err)
+	scanner := bufio.NewScanner(strings.NewReader(string(example)))
+	for scanner.Scan() {
+		value := scanner.Text()
+		input = append(input, value)
+	}
+	return input
+}
